@@ -9,6 +9,8 @@ var HIDDEN_DETAIL_CLASS = "hidden-detail";
 var TINY_EFFECT_CLASS = "is-tiny";
 var ESC_KEY = 27;
 
+let thumbnail_index = 0;
+
 function setDetails(imageUrl, titleText) {
   "use strict";
 
@@ -74,6 +76,30 @@ function addKeyPressHandler() {
       hideDetails();
     }
   });
+}
+
+function cyclePrev() {
+  "use strict";
+  var thumbnails = getThumbnailsArray();
+  thumbnail_index === 0 ? (thumbnail_index = thumbnails.length - 1) : thumbnail_index--;
+  thumbnail_index = thumbnail_index % thumbnails.length;
+
+  const thumb = thumbnails[thumbnail_index];
+  setDetailsFromThumb(thumb);
+  showDetails();
+  console.log(thumbnail_index);
+}
+
+function cycleNext() {
+  "use strict";
+  var thumbnails = getThumbnailsArray();
+  thumbnail_index === thumbnails.length - 1 ? (thumbnail_index = 0) : thumbnail_index++;
+  thumbnail_index = thumbnail_index % thumbnails.length;
+
+  const thumb = thumbnails[thumbnail_index];
+  setDetailsFromThumb(thumb);
+  showDetails();
+  console.log(thumbnail_index);
 }
 
 function initializeEvents() {

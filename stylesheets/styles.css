@@ -146,3 +146,11 @@ a {
 .hidden-detail .thumbnail-item {
   max-width: 80%;
 }
+
+.button-cycle {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 0.5rem;
+  border-width: 0.15rem;
+  border-color: rgb(96, 125, 139);
+}
